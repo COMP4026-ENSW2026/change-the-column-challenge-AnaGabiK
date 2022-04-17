@@ -19,8 +19,11 @@ class PetsController extends Controller
     public function create(){
         return view('pets.adicionar');
     }
+    public function update(){
+        return view('pets.editar');
+    }
 
-    public function store(Request $request){
+    public function store(Request $request, Pet $pet){
         // $request->validate([
         //     'name' => 'required',
         //     'specie' => 'required',
@@ -29,6 +32,13 @@ class PetsController extends Controller
         // ]);
 
         $pet = Pet::create([
+            'name' => $request['name'],
+            'specie' => $request['specie'],
+            'color' => $request['color'],
+            'size' => $request['size'],
+        ]);
+        
+        $pet->update([
             'name' => $request['name'],
             'specie' => $request['specie'],
             'color' => $request['color'],
@@ -45,6 +55,7 @@ class PetsController extends Controller
             'pet' => $pet
         ]);
     }
+
 
 
 }

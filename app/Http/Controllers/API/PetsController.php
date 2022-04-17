@@ -54,6 +54,7 @@ class PetsController extends Controller
     public function show(Pet $pet)
     {
         return $pet;
+        
     }
 
     /**
